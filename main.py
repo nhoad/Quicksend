@@ -26,9 +26,6 @@ default_options = {}
 
 default_options['watch_directory'] = os.path.join(os.environ['HOME'], '.quicksend/unsent')
 default_options['sent_directory'] = os.path.join(os.environ['HOME'], '.quicksend/sent')
-default_options['email_body'] = ''
-default_options['email_subject'] = 'Timelog for week ending %%d %%B'
-default_options['sender_email'] = 'nathan@getoffmalawn.com'
 default_options['smtp_server'] = 'smtp.gmail.com'
 default_options['smtp_port'] = '587'
 default_options['smtp_use_tls'] = 'yes'
@@ -40,10 +37,9 @@ class FolderWatch(ProcessEvent):
         get = config.get
         getboolean = config.getboolean
 
-        self.account = (get('settings', 'sender_email'), get('settings', 'password'))
+        self.account = (get('settings', 'username'), get('settings', 'password'))
         self.smtp_info = (get('settings', 'smtp_server'), get('settings', 'smtp_port'), getboolean('settings', 'smtp_use_tls'))
         self.log_file = get('settings', 'log_file')
-        self.email = (get('settings', 'email_body'), get('settings', 'email_subject'))
 
         filetypes = config.items('filetypes')
 
@@ -101,6 +97,7 @@ class FolderWatch(ProcessEvent):
         msg.attach(part)
 
         sender.sendmail(username, address, msg.as_string())
+        sender.close()
         shutil.move(file_name, moved)
         logging.info('message sent!')
 
