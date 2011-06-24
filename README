@@ -8,17 +8,9 @@ General:
 --------
 Quicksend is a way of sending typical emails with specific attachments, quickly.
 
-I have to send of timelogs of my work progress each week, and it's annoying to
-create the timesheet, export to pdf, open my email, give it a proper subject,
-attach it, and send it. This sets me up so all I do is create the timesheet and
-export it.
+I have to send off timelogs of my work progress each week, and it's annoying to create the timesheet, export to pdf, open my email, give it a proper subject, attach it, and send it. This sets me up so all I do is create the timesheet and export it.
 
-It works by monitoring a folder on your computer (typically ~/quicksend/unsent),
-and when it finds a new file, it will check the filetype against the file types
-in your ~/quicksend/config file and send them to the matched email address with
-the custom subject and message. Once this is done the file is moved to
-~/.quicksend/sent. I've only written and tested this with Gmail but you're welcome
-to test it with another SMTP server and see how it goes.
+It works by monitoring a folder on your computer (typically ~/quicksend/unsent), and when it finds a new file, it will check the filetype against the file types in your ~/quicksend/config file and send them to the matched email address with the custom subject and message. Once this is done the file is moved to ~/.quicksend/sent. I've only written and tested this with Gmail but you're welcome to test it with another SMTP server and see how it goes.
 
 Configuration:
 --------------
@@ -46,8 +38,4 @@ message = <body for the email>
 Installation:
 -------------
 
-First, complete the Configuration section, and you're all set up. From there you
-just need to start quicksend. I recommend creating an alias in your rc file, and
-setting that up to start whenever you'd like, however your system does that. Once
-you have it running, that's all you have to do. Just start saving files
-to the unsent folder, and quicksend will send them for you.
+First, complete the Configuration section, and you're all set up. From there you just need to start quicksend. I recommend creating an alias in your rc file, and setting that up to start whenever you'd like, however your system does that. Once you have it running, that's all you have to do. Just start saving files to the unsent folder, and quicksend will send them for you.
