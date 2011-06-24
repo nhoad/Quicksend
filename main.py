@@ -69,7 +69,9 @@ class FolderWatch(ProcessEvent):
 
         server, port, tls = self.smtp_info
         username, password = self.account
-        body, subject = self.email
+        type = os.path.split(file_name)[1]
+        body = self.config.get(type, 'message')
+        subject = self.config.get(type, 'subject')
 
         port = int(port)
 
